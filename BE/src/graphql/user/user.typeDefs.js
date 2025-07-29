@@ -6,6 +6,12 @@ export const userTypeDefs = `
         created_at: String!
         updated_at: String!
     }
+
+    type LoginResponse {
+        success: Boolean!
+        message: String!
+        user: User
+    }
     
     type Query {
         getAllUsers: [User!]!
@@ -13,7 +19,8 @@ export const userTypeDefs = `
     }
 
     type Mutation {
-        createUser(name: String!, email: String!, password: String!): User
+        createUser(name: String!, email: String!, password: String!): User!
         deleteUser(id: ID!): User
+        login(email: String!, password: String!): LoginResponse!
     }
 `;

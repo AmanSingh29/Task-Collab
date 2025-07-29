@@ -5,6 +5,7 @@ export const taskTypeDefs = `
         description: String!
         status: String!
         assigned_to: User!
+        project: Project!
         created_at: String!
         updated_at: String!
     }
@@ -15,6 +16,7 @@ export const taskTypeDefs = `
     }
 
     type Mutation {
-        createTask(title: String!, description: String!, assigned_to_id: ID!): Task!
+        createTask(title: String!, description: String!, assigned_to_id: ID!, project_id: ID!): Task!
+        deleteTask(id: ID!): Task!
     }
 `;

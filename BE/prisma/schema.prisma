@@ -24,6 +24,16 @@ model Task {
   status String @default("pending")
   assigned_to User @relation(fields: [assigned_to_id], references: [id])
   assigned_to_id String
+  project Project @relation(fields: [project_id], references: [id])
+  project_id String
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
+}
+
+model Project {
+  id String @id @default(uuid())
+  name String @db.VarChar(40)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  tasks Task[]
 }
